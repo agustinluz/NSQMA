@@ -148,6 +148,37 @@
                         </tr>
                     </xsl:for-each>
                 </table>
+                <table>
+                    <tr>
+                        <td>Id</td>
+                        <td>NombreLocal</td>
+                        <td>MARCADOR</td>
+                        <td>NombreVisitante</td>
+                        <td>VICTORIA</td>
+                    </tr>
+                    <xsl:for-each select="/laliga/partidos/partido">
+                        <xsl:variable name="id" select="@id" />
+                        <tr>
+                           <td>
+                                <xsl:value-of select="$id"/>
+                           </td>
+                           <td>
+                                <xsl:value-of select="/local/nombre"/>
+                           </td>
+                           <td>
+                                <xsl:value-of select="(/local/nombre/@goles)+'vs'+(/visitante/nombre/@goles)"/>
+                           </td>
+                           <td>
+                                <xsl:value-of select="/vistante/nombre"/>
+                           </td>
+                           <td>
+                                <xsl:value-of select=""/>
+                           </td>
+                        </tr>
+                        
+
+                    </xsl:for-each>
+                </table>
             </body>
         </html>
     </xsl:template>
