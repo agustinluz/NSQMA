@@ -10,6 +10,8 @@
                         <td>Tipo De Menu</td>
                         <td>Plato</td>
                         <td>Ingredientes</td>
+                        <td>Precio</td>
+                        <td>COLOR DISTINCION</td>
                     </tr>
                     <xsl:for-each select="/arepazo/menu">
                         <xsl:variable name="id" select="@id" />
@@ -23,6 +25,34 @@
                             <td>
                                 <xsl:value-of select="nombre"/>
                             </td>
+                            <td>
+                                <ul>
+                                    <xsl:for-each select="ingrediente">
+                                        <li>
+                                            <xsl:value-of select="." /> (<xsl:value-of select="@cantidad" /> kg)
+                                        </li>
+                                    </xsl:for-each>
+                                </ul>
+                            </td>
+                            <td>
+                                <xsl:value-of select="precio"/>
+                            </td>
+                           
+                            <xsl:choose>
+                                <xsl:when test="@tipo='Comida'">
+                                    <td style="background-color:orange;width:65px"></td>
+                                </xsl:when>
+                                <xsl:when test="@tipo='Bebidas'">
+                                    <td style="background-color:blue;width:65px"></td>
+                                </xsl:when>
+                                <xsl:when test="@tipo='Postres'">
+                                    <td style="background-color:green;width:65px"></td>
+                                </xsl:when>
+                                <xsl:otherwise>
+                                    <td></td>
+                                </xsl:otherwise>
+                            </xsl:choose>
+                            
                         </tr>
                     </xsl:for-each>
                 </table>
