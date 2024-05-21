@@ -148,7 +148,7 @@
                         </tr>
                     </xsl:for-each>
                 </table>
-                <table>
+                <table border="1">
                     <tr>
                         <td>Id</td>
                         <td>NombreLocal</td>
@@ -171,21 +171,28 @@
                                 <xsl:value-of select="visitante/nombre/@goles"/>
                            </td>
                            <td>
-                                <xsl:value-of select="vistante/nombre"/>
+                                <xsl:value-of select="visitante/nombre"/>
                            </td>
-                           <td>
-                                <xsl:when test="local/nombre/@goles > visitante/nombre/@goles"/>
-                                    <td style="back-ground-color:blue;width:77px"></td>
-                                
-                                <xsl:when test="local/nombre/@goles = visitante/nombre/@goles"/>
-                                    <td style="back-ground-color:green;width:77px"></td>
-                                
-                                <xsl:when test="visitante/nombre/@goles > local/nombre/@goles"/>
-                                    <td style="back-ground-color:red;width:77px"></td>
-                           </td>
-                        </tr>
-                        
 
+                            <xsl:choose>
+                                <xsl:when test="local/nombre/@goles > visitante/nombre/@goles">
+                                    <td style="background-color:blue;width:65px"></td>
+                            </xsl:when>
+                                
+                                
+                                <xsl:when test="local/nombre/@goles = visitante/nombre/@goles">
+                                    <td style="background-color:green;width:65px"></td>
+                                </xsl:when>
+                                
+                                <xsl:when test="visitante/nombre/@goles > local/nombre/@goles">
+                                    <td style="background-color:red;width:65px"></td>
+                                </xsl:when>
+                                
+                                <xsl:otherwise>
+                                    <td></td>
+                                </xsl:otherwise>
+                            </xsl:choose>
+                        </tr>
                     </xsl:for-each>
                 </table>
             </body>
