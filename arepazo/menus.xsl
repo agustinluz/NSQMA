@@ -6,12 +6,24 @@
                 <h1>MENUS</h1>
                 <table border="1">
                     <tr style="color:blue">
+                        <td>ID</td>
                         <td>Tipo De Menu</td>
                         <td>Plato</td>
                         <td>Ingredientes</td>
                     </tr>
                     <xsl:for-each select="/arepazo/menu">
                         <xsl:variable name="id" select="@id" />
+                        <tr>
+                            <td>
+                                <xsl:value-of select="$id"/>
+                            </td>
+                            <td>
+                                <xsl:value-of select="@tipo"/>
+                            </td>
+                            <td>
+                                <xsl:value-of select="nombre"/>
+                            </td>
+                        </tr>
                     </xsl:for-each>
                 </table>
             </body>
