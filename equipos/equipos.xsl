@@ -163,16 +163,25 @@
                                 <xsl:value-of select="$id"/>
                            </td>
                            <td>
-                                <xsl:value-of select="/local/nombre"/>
+                                <xsl:value-of select="local/nombre"/>
                            </td>
                            <td>
-                                <xsl:value-of select="(/local/nombre/@goles)+'vs'+(/visitante/nombre/@goles)"/>
+                                <xsl:value-of select="local/nombre/@goles"/>
+                                -
+                                <xsl:value-of select="visitante/nombre/@goles"/>
                            </td>
                            <td>
-                                <xsl:value-of select="/vistante/nombre"/>
+                                <xsl:value-of select="vistante/nombre"/>
                            </td>
                            <td>
-                                <xsl:value-of select=""/>
+                                <xsl:when test="local/nombre/@goles > visitante/nombre/@goles"/>
+                                    <td style="back-ground-color:blue;width:77px"></td>
+                                
+                                <xsl:when test="local/nombre/@goles = visitante/nombre/@goles"/>
+                                    <td style="back-ground-color:green;width:77px"></td>
+                                
+                                <xsl:when test="visitante/nombre/@goles > local/nombre/@goles"/>
+                                    <td style="back-ground-color:red;width:77px"></td>
                            </td>
                         </tr>
                         
